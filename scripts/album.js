@@ -28,6 +28,21 @@ var albumMarconi = {
      ]
  };
 
+var albumThree = {
+     name: 'Fox',
+     artist: 'Three',
+     label: 'Secondly',
+     year: '2016',
+     albumArtUrl: 'assets/images/album_covers/06.png',
+     songs: [
+         { name: 'Any Time', length: '6:26' },
+         { name: 'Light', length: '3:14' },
+         { name: 'Not Now', length: '2:01' },
+         { name: 'Average', length: '3:29'},
+         { name: 'Element', length: '4:15'}
+     ]
+ };
+
 var createSongRow = function(songNumber, songName, songLength) {
      var template =
         '<tr class="album-view-song-item">'
@@ -39,8 +54,6 @@ var createSongRow = function(songNumber, songName, songLength) {
  
      return template;
  };
-
-var setCurrentAlbum = function(album) {
      // #1
      var albumTitle = document.getElementsByClassName('album-view-title')[0];
      var albumArtist = document.getElementsByClassName('album-view-artist')[0];
@@ -48,6 +61,10 @@ var setCurrentAlbum = function(album) {
      var albumImage = document.getElementsByClassName('album-cover-art')[0];
      var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
  
+
+var setCurrentAlbum = function(album) {
+   
+     
      // #2
      albumTitle.firstChild.nodeValue = album.name;
      albumArtist.firstChild.nodeValue = album.artist;
@@ -65,4 +82,14 @@ var setCurrentAlbum = function(album) {
  
  window.onload = function() {
      setCurrentAlbum(albumPicasso);
+   
+   var album = [albumPicasso, albumMarconi, albumThree];
+   var index = 1;
+   albumImage.addEventListener("click", function(event) {
+     setCurrentAlbum(albums[index]);
+     index++;
+     if (index == albums.length) {
+       index = 0;
+     }
+   });
  };
