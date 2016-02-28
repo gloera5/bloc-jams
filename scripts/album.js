@@ -62,6 +62,15 @@ var setCurrentAlbum = function(album) {
          albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].name, album.songs[i].length);
      }
  };
+ var findParentByClassName = function(element, targetClass) {
+    if (element) {
+        var currentParent = element.parentElement;
+        while (currentParent.className != targetClass) {
+            currentParent = currentParent.parentElement;
+        }
+        return currentParent;
+    }
+ };
  var clickHandler = function(targetElement) {
  };
  var songItem = getSongItem(targetElement);
